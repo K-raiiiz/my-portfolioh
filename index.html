@@ -100,13 +100,54 @@ form button{padding:12px;border-radius:8px;background:#58a6ff;border:none;color:
 .light-mode .mobile-menu {
   background: #ffffffcc !important;
 }
+/* Smooth neon border */
+.side-border {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
 
+/* Base border: always dim */
+#borderBase {
+  filter: drop-shadow(0 0 4px royalblue);
+}
+
+/* Progress glow */
+#borderProgress {
+  filter: drop-shadow(0 0 8px royalblue) drop-shadow(0 0 16px royalblue);
+  transition: stroke 0.3s ease, filter 0.3s ease;
+}
+
+/* Light Mode */
+body.light-mode #borderBase {
+  stroke: royalblue;
+  filter: drop-shadow(0 0 4px royalblue);
+}
+body.light-mode #borderProgress {
+  stroke: royalblue;
+  filter: drop-shadow(0 0 8px royalblue) drop-shadow(0 0 18px royalblue);
+}
+
+/* Dark Mode */
+body.dark-mode #borderBase {
+  stroke: cyan;
+  filter: drop-shadow(0 0 4px cyan);
+}
+body.dark-mode #borderProgress {
+  stroke: cyan;
+  filter: drop-shadow(0 0 12px cyan) drop-shadow(0 0 22px cyan);
+}
 @media(max-width:768px){nav{display:none;}.hamburger{display:flex;}}
 </style>
 </head>
 <body>
+<body>
+
 <header>
-<h1>My Portfolio</h1>
+<h1>Portfolio</h1>
 <nav>
 <a href="#home">Home</a>
 <a href="#skills">Skills</a>
@@ -123,6 +164,37 @@ form button{padding:12px;border-radius:8px;background:#58a6ff;border:none;color:
 <a onclick="toggleMenu()" href="#contact">Contact</a>
 </div>
 </header>
+<!-- Electric Shaped Border -->
+  <!-- Scrolling Glow Border -->
+<svg class="side-border" width="80" height="100%" viewBox="0 0 80 1000" preserveAspectRatio="none">
+  
+  <!-- Base border (dim glow) -->
+  <path id="borderBase"
+    d="M10 0 
+       L10 300 
+       L40 340 
+       L40 1000"
+    stroke="royalblue"
+    stroke-width="3"
+    opacity="0.3"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+
+  <!-- Progress glow (moves with scroll) -->
+  <path id="borderProgress"
+    d="M10 0 
+       L10 300 
+       L40 340 
+       L40 1000"
+    stroke="royalblue"
+    stroke-width="3"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-dasharray="1000"
+    stroke-dashoffset="1000" />
+</svg>
 <section class="hero fade-in" id="home">
 <img loading="lazy" src="assets/profile.jpg" class="profile-img" />
 <h1 class="typing-text">Hi, I'm a Web Developer</h1>
@@ -276,7 +348,26 @@ setInterval(typeEffect, 4500);
         console.log(error);
       });
   });
+  const progressPath = document.getElementById("borderProgress");
 
+const pathLength = progressPath.getTotalLength();
+
+// Initial setup
+progressPath.style.strokeDasharray = pathLength;
+progressPath.style.strokeDashoffset = pathLength;
+
+window.addEventListener("scroll", () => {
+
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+
+  const scrollPercent = scrollTop / docHeight;
+
+  const progress = pathLength * scrollPercent;
+
+  // Move glow along border
+  progressPath.style.strokeDashoffset = pathLength - progress;
+});
 </script>
 >
 </body>
