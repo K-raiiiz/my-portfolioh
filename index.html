@@ -579,7 +579,6 @@ body.light-mode #page-loader {
       stroke-dashoffset="0" />
   </svg>
 
-
   <!-- Hero -->
   <section class="hero fade-in" id="home">
     <img loading="lazy" src="assets/profile-img.jpg" class="profile-img" alt="Profile" />
@@ -592,7 +591,6 @@ body.light-mode #page-loader {
       </p>
     </div>
   </section>
-
 
   <!-- About -->
   <section class="about fade-in" id="about">
@@ -607,7 +605,6 @@ body.light-mode #page-loader {
       </p>
     </div>
   </section>
-
 
   <!-- Skills -->
   <section class="skills fade-in" id="skills">
@@ -627,19 +624,17 @@ body.light-mode #page-loader {
     </div>
   </section>
 
-
   <!-- Projects -->
   <section class="projects fade-in" id="projects">
     <h2 class="section-heading">Projects</h2>
     <div class="project-box fade-in">
-      <h3" style="color: rgba(122,137,180,0.9); margin-bottom:10px;">My Portfolio Website</h3>
-      <p"> This is my first personal portfolio website, built using HTML, CSS, and JavaScript. It includes animations, dark/light mode, responsive design, and smooth UI effects.</p>
+      <h3 style="color: rgba(40, 68, 144, 0.9); margin-bottom:10px;">My Portfolio Website</h3>
+      <p> This is my first personal portfolio website, built using HTML, CSS, and JavaScript. It includes animations, dark/light mode, responsive design, and smooth UI effects.</p>
     </div>
     <div class="project-box fade-in">
-      <p>I am currently working on my first projects. Stay tuned for future updates!</p>
+      <p>I am currently working on my next projects. Stay tuned for future updates!</p>
     </div>
   </section>
-
 
   <!-- Contact -->
   <section class="contact" id="contact">
@@ -664,7 +659,6 @@ body.light-mode #page-loader {
     </div>
   </section>
 
-
   <!-- Footer -->
   <div class="footer-options-wrapper">
     <div class="footer-options">
@@ -676,7 +670,6 @@ body.light-mode #page-loader {
   </div>
 
   <div class="footer" style="text-align:center;padding-bottom:30px;">© 2025. Made with ❤ by Kethanraii.</div>
-
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -692,7 +685,6 @@ body.light-mode #page-loader {
       });
     }, { threshold: 0.18 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
 
    const toggleBtn = document.getElementById('mode-toggle');
 
@@ -713,8 +705,6 @@ toggleBtn.addEventListener('click', () => {
 });
 
 window.addEventListener('load', () => setTheme(localStorage.getItem('theme') || 'dark'));
-
-
 
     const typingText = document.querySelector('.typing-text');
     const words = [
@@ -755,7 +745,6 @@ window.addEventListener('load', () => setTheme(localStorage.getItem('theme') || 
     typingText.appendChild(document.createTextNode(''));
     typeWord();
 
-
     emailjs.init("xW_RXOvw4CNSwplHq");
     document.getElementById('contact-form')?.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -770,7 +759,6 @@ window.addEventListener('load', () => setTheme(localStorage.getItem('theme') || 
           console.error(err);
         });
     });
-
 
     const borderProgress = document.getElementById('borderProgress');
     const lastSection = document.querySelector('#contact');
@@ -801,7 +789,6 @@ window.addEventListener('load', () => setTheme(localStorage.getItem('theme') || 
 
     window.addEventListener('scroll', updateBorder, { passive: true });
     updateBorder();
-
 
     const navItems = document.querySelectorAll('header nav a');
     navItems.forEach(link => {
